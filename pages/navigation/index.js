@@ -1,19 +1,7 @@
 // pages/dirction.js
-let plugin = requirePlugin("myPlugin")
 const app = getApp();
-const lat = app.globalData.lat;
-const lon = app.globalData.lon;
-const endName = app.globalData.addressName;
 
-let routeInfo = {
-  // startLat: 39.90469, //起点纬度 选填
-  // startLng: 116.40717, //起点经度 选填
-  // startName: "我的位置", // 起点名称 选填
-  endLat: lat, // 终点纬度必传
-  endLng: lon, //终点经度 必传
-  endName: endName, //终点名称 必传
-  mode: "car" //算路方式 选填
-}
+import { LAT, LON, HOTEL, ADDRESS, HE_TEL, SHE_TEL, TIME, DATE, SHARE_TITLE, SHARE_IMG }from '../../utils/constanst';
 
 Page({
 
@@ -21,7 +9,58 @@ Page({
    * Page initial data
    */
   data: {
-    routeInfo: routeInfo
+    latitude: LAT,
+    longitude: LON,
+    heTel: HE_TEL,
+    sheTel: SHE_TEL,
+    he: 'kwk',
+    she: 'lxy',
+    time: TIME,
+    date: DATE,
+    markers: [{
+      id: 1,
+      latitude: LAT,
+      longitude: LON,
+      iconPath: "/images/location.png",
+      width: 50,
+      height: 50,
+      callout: {
+        content: HOTEL,
+        // color: '#ccc',
+        fontSize: 14,
+        // borderWidth: 1,
+        borderRadius: 10,
+        // borderColor: '#333',
+        // bgColor: '#fff',
+        padding: 10,
+        display: 'ALWAYS',
+        textAlign: 'center'
+      }
+    }],
+  },
+
+  callhe: function(event) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.heTel
+    })
+  },
+  callshe: function(event) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.sheTel
+    })
+  },
+
+  onMarkerTap() {
+    wx.openLocation({
+      latitude: LAT,
+      longitude: LON,
+      scale: 18,
+      name: HOTEL,
+      address: ADDRESS,
+      success(res) {
+        console.log(res)
+      }
+    }, )
   },
 
   /**
@@ -35,7 +74,7 @@ Page({
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function() {
-
+    this.mapCtx = wx.createMapContext('myMap');
   },
 
   /**
@@ -77,6 +116,21 @@ Page({
    * Called when user click on the top right corner to share
    */
   onShareAppMessage: function() {
-
+    return {
+      title: SHARE_TITLE,
+      imageUrl: SHARE_IMG,
+      path: 'pages/index/index',
+      success: function(res) {
+        wx.showToast({
+          title: '分享成功',
+        })
+      },
+      fail: function(res) {
+        // 转发失败
+        wx.showToast({
+          title: '分享取消',
+        })
+      }
+    }
   }
 })

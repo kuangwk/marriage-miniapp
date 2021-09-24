@@ -1,30 +1,20 @@
 // app.js
+import { MUSIC_IMG, MUSIC_URL, MUSIC_TITLE } from './utils/constanst';
 App({
   onLaunch: function() {
-    //var that = this;
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      // wx.login({
-      //     success: function () {
-      //         wx.getUserInfo({
-      //             success: function (res) {
-      //                 //console.info(res);
-      //                 that.globalData.userInfo = res.userInfo;
-      //                 typeof cb == "function" && cb(that.globalData.userInfo)
-      //             }
-      //         })
-      //     }
-      // });
-    }
-
+    const playMan = wx.getBackgroundAudioManager();
+    playMan.onError((e) => {
+      console.error('onError', e)
+    })
+    playMan.title = MUSIC_TITLE
+    playMan.coverImgUrl = MUSIC_IMG
+    playMan.src = MUSIC_URL
   },
   onHide: function() {
-    wx.pauseBackgroundAudio();
+    wx.getBackgroundAudioManager().pause();
   },
   onShow: function() {
-    wx.playBackgroundAudio()
+    wx.getBackgroundAudioManager().play();
   },
   globalData: {
     userInfo: null,
@@ -34,9 +24,7 @@ App({
     lon: 120.000000,
     addressName: "希尔顿大酒店",
 
-    appid: 'wx349xxxxxxx', //此处改成您自己的小程序appid
     uid: 1,
-    server: 'http://localhost:8080/wx',
     music_url: ''
   }
 });

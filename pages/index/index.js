@@ -1,11 +1,8 @@
 // pages/invitation/index.js
 const app = getApp()
-var server = app.globalData.server + "/info";
-var appid = app.globalData.appid;
-const uid = app.globalData.uid;
-var touchDot = 0; //触摸时的原点  
-var time = 0; // 时间记录，用于滑动时且时间小于1s则执行左右滑动 
-var interval = ""; // 记录/清理时间记录 
+
+import { DATE, LUNAR, ADDRESS, HOTEL, SHARE_IMG, SHARE_TITLE } from '../../utils/constanst';
+
 Page({
 
   /**
@@ -13,8 +10,17 @@ Page({
    */
   data: {
     animationData: "",
-    userInfo: {},
-    music_url: '',
+    userInfo: {
+    },
+    mainInfo: {
+      he: '邝伟科',
+      she: '赖晓燕',
+      date: DATE,
+      lunar: LUNAR,
+      address: ADDRESS,
+      hotel: HOTEL,
+      cover: 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/WechatIMG145.jpeg',
+    },
     isPlayingMusic: true
   },
 
@@ -26,7 +32,7 @@ Page({
     //创建动画
     var animation = wx.createAnimation({
 
-      duration: 3600,
+      duration: 3000,
       timingFunction: "ease",
       delay: 600,
       transformOrigin: "50% 50%",
@@ -34,47 +40,12 @@ Page({
     })
 
 
-    animation.scale(0.9).translate(10, 10).step(); //边旋转边放大
+    animation.scale(1).step(); //边旋转边放大
 
 
     //导出动画数据传递给组件的animation属性。
     this.setData({
       animationData: animation.export(),
-    })
-
-    var that = this
-    wx.showLoading({ //期间为了显示效果可以添加一个过度的弹出框提示“加载中”  
-      title: '加载中',
-      icon: 'loading',
-    });
-    wx.request({
-      url: server,
-      method: 'GET',
-      data: {
-        'uid': uid,
-        'appid': appid
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        // console.log(res.data)
-        wx.hideLoading();
-        wx.playBackgroundAudio({
-          dataUrl: res.data.music,
-          title: '',
-          coverImgUrl: ''
-        })
-        wx.setStorage({
-          key: 'main',
-          data: res.data,
-        })
-
-        that.setData({
-          mainInfo: res.data,
-          music_url: res.data.music
-        });
-      }
     })
   },
 
@@ -82,7 +53,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
   },
 
   /**
@@ -124,11 +94,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-    var that = this;
     //console.log(that.data);
     return {
-      title: that.data.mainInfo.share,
-      imageUrl: that.data.mainInfo.thumb,
+      title: SHARE_TITLE,
+      imageUrl: SHARE_IMG,
       path: 'pages/index/index',
       success: function(res) {
         wx.showToast({
@@ -143,28 +112,14 @@ Page({
       }
     }
   },
-  callhe: function(event) {
-    wx.makePhoneCall({
-      phoneNumber: this.data.mainInfo.he_tel
-    })
-  },
-  callshe: function(event) {
-    wx.makePhoneCall({
-      phoneNumber: this.data.mainInfo.she_tel
-    })
-  },
   play: function(event) {
     if (this.data.isPlayingMusic) {
-      wx.pauseBackgroundAudio();
+      wx.getBackgroundAudioManager().pause();
       this.setData({
         isPlayingMusic: false
       })
     } else {
-      wx.playBackgroundAudio({
-        dataUrl: this.data.music_url,
-        title: '',
-        coverImgUrl: ''
-      })
+      wx.getBackgroundAudioManager().play();
       this.setData({
         isPlayingMusic: true
       })

@@ -1,0 +1,48 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/navigation/index",
+          "pathName": "pages/navigation/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/photos/index",
+          "pathName": "pages/photos/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "poster",
+          "pathName": "pages/poster/index",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "留言",
+          "pathName": "pages/chat/index",
+          "query": ""
+        },
+        {
+          "name": "pages/navigation/index",
+          "pathName": "pages/navigation/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

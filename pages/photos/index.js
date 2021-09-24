@@ -5,44 +5,15 @@ const uid = app.globalData.uid;
 var server = app.globalData.server + "/album";
 var appid = app.globalData.appid;
 var mainData;
+import { PHOTOS, SHARE_TITLE, SHARE_IMG } from '../../utils/constanst';
 
 Page({
   data: {
     userInfo: {},
-    slideList: []
+    slideList: PHOTOS,
   },
   onLoad: function() {
-    var that = this
 
-    wx.showLoading({ //期间为了显示效果可以添加一个过度的弹出框提示“加载中”  
-      title: '加载中',
-      icon: 'loading',
-    });
-    wx.getStorage({
-      key: 'main',
-      success: function(res) {
-        // console.log(res)
-        mainData = res.data
-      },
-    })
-    wx.request({
-      url: server,
-      method: 'GET',
-      data: {
-        'uid': uid,
-        'appid': appid
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-
-        wx.hideLoading();
-        that.setData({
-          slideList: res.data
-        });
-      }
-    })
   },
   onReady: function() {
     // 页面渲染完成
@@ -56,10 +27,10 @@ Page({
   onUnload: function() {
     // 页面关闭
   },
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function() {
     return {
-      title: mainData.share,
-      imageUrl: mainData.thumb,
+      title: SHARE_TITLE,
+      imageUrl: SHARE_IMG,
       path: 'pages/index/index',
       success: function(res) {
         wx.showToast({
@@ -75,11 +46,7 @@ Page({
     }
   },
   previewImage: function(e) {
-    var imgsurl = []
-    var imgObj = this.data.slideList
-    for (var i = 0; i < imgObj.length; i++) {
-      imgsurl[i] = imgObj[i]['image']
-    }
+    var imgsurl = this.data.slideList
     var current = e.target.dataset.src;
     wx.previewImage({
       current: current, // 当前显示图片的http链接  

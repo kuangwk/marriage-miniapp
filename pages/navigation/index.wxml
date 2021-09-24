@@ -1,4 +1,24 @@
 <!--pages/dirction.wxml-->
+<!-- pages/map/index.wxml -->
 <view class="container">
-  <map-route route-info="{{routeInfo}}"></map-route>
+  <image src='/images/t1.png' class='t1'></image>
+  <view class="map">
+    <map id="myMap" longitude="{{longitude}}" enable-scroll="false" show-compass latitude="{{latitude}}" markers="{{markers}}" bindmarkertap="onMarkerTap" show-location></map>
+  </view>
+  <view class="tel">
+    <view class="tel_he" wx:if="{{heTel}}">
+      <view class="call" bindtap="callhe">
+        <image src="/images/he.png" width="100%" />
+      </view>
+      呼叫新郎
+    </view>
+    <view class="tel_she" wx:if="{{sheTel}}">
+      <view class="call" bindtap="callshe">
+        <image src="/images/she.png" width="100%" />
+      </view>
+      呼叫新娘
+    </view>
+  </view>
+  <view class="time">婚礼入席时间：10月4日 {{time}}</view>
+  <view class='copyright'>Made With ❤ By {{he}} & {{she}}</view>
 </view>

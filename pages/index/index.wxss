@@ -2,6 +2,7 @@
 
 .container {
   min-height: 100vh;
+  color: #684c4b;
 }
 
 .cover {
@@ -10,6 +11,7 @@
   left: 0;
   width: 750rpx;
   height: 100vh;
+  transform: scale(1.2);
 }
 
 .inv {
@@ -28,6 +30,7 @@
   padding: 15rpx;
   left: 50rpx;
   background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
 }
 
 .box {
@@ -118,15 +121,15 @@
   height: 60rpx;
   margin-left: -5px;
   transform-origin: top;
-  -webkit-transform: rotate(20deg);
+  transition: all 1s;
 }
 
 .playImg {
-  animation: musicStop 1s linear forwards;
+  transform: rotate(20deg);
 }
 
 .pauseImg {
-  animation: musicStart 1s linear forwards;
+  transform: rotate(0deg);
 }
 
 @-webkit-keyframes musicRotate {
@@ -136,26 +139,6 @@
 
   to {
     -webkit-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes musicStop {
-  from {
-    -webkit-transform: rotate(20deg);
-  }
-
-  to {
-    -webkit-transform: rotate(0deg);
-  }
-}
-
-@-webkit-keyframes musicStart {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(20deg);
   }
 }
 

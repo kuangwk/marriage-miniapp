@@ -10,7 +10,7 @@ export const TIME = '下午 5:30';
 export const HE_TEL = '15626467080';
 export const SHE_TEL = '13410980630';
 
-export const MUSIC_URL = 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/music.mp3'
+export const MUSIC_URL = 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/muguangzhicheng.mp3'
 export const MUSIC_TITLE = 'KWK❤️LXY'
 export const MUSIC_IMG = 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/share-img.png'
 

@@ -35,6 +35,7 @@
 
 .box {
   padding: 30rpx 0;
+  font-family: STXihei;
   position: relative;
   border: 4rpx solid rgba(0, 0, 0, 0.8);
 }

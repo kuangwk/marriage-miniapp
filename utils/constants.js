@@ -7,8 +7,15 @@ export const DATE = '2021.10.04';
 export const LUNAR = '辛丑年八月廿八';
 export const TIME = '下午 5:30';
 
+export const HE = '邝伟科';
+export const SHE = '赖晓燕';
+
+export const HE_LETTER = 'KWK';
+export const SHE_LETTER = 'LXY';
+
 export const HE_TEL = '15626467080';
 export const SHE_TEL = '13410980630';
+export const INDEX_COVER = 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/WechatIMG145.jpeg'
 
 export const MUSIC_URL = 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/muguangzhicheng.mp3'
 export const MUSIC_TITLE = 'KWK❤️LXY'
@@ -30,8 +37,8 @@ export const PHOTOS = [
   'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9498.jpeg',
   'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9499.jpeg',
   'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9500.jpeg',
-  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9501.jpeg', 
-  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9502.jpeg', 
-  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9503.jpeg', 
-  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9504.jpeg', 
+  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9501.jpeg',
+  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9502.jpeg',
+  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9503.jpeg',
+  'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/photos/WechatIMG9504.jpeg',
 ]

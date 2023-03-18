@@ -1,7 +1,7 @@
 // pages/dirction.js
 const app = getApp();
 
-import { LAT, LON, HOTEL, ADDRESS, HE_TEL, SHE_TEL, TIME, DATE, SHARE_TITLE, SHARE_IMG }from '../../utils/constanst';
+import { LAT, LON, HOTEL, ADDRESS, HE_TEL, SHE_TEL, TIME, DATE, SHARE_TITLE, SHARE_IMG, HE_LETTER, SHE_LETTER }from '../../utils/constants';
 
 Page({
 
@@ -13,8 +13,8 @@ Page({
     longitude: LON,
     heTel: HE_TEL,
     sheTel: SHE_TEL,
-    he: 'kwk',
-    she: 'lxy',
+    he: HE_LETTER,
+    she: SHE_LETTER,
     time: TIME,
     date: DATE,
     markers: [{

@@ -1,7 +1,7 @@
 // pages/invitation/index.js
 const app = getApp()
 
-import { DATE, LUNAR, ADDRESS, HOTEL, SHARE_IMG, SHARE_TITLE } from '../../utils/constanst';
+import { DATE, LUNAR, ADDRESS, HOTEL, SHARE_IMG, SHARE_TITLE, HE, SHE, INDEX_COVER } from '../../utils/constants';
 
 Page({
 
@@ -13,13 +13,13 @@ Page({
     userInfo: {
     },
     mainInfo: {
-      he: '邝伟科',
-      she: '赖晓燕',
+      he: HE,
+      she: SHE,
       date: DATE,
       lunar: LUNAR,
       address: ADDRESS,
       hotel: HOTEL,
-      cover: 'https://kwk-1256068649.cos.ap-guangzhou.myqcloud.com/WechatIMG145.jpeg',
+      cover: INDEX_COVER,
     },
     isPlayingMusic: true
   },

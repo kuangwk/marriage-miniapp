@@ -5,7 +5,7 @@ const uid = app.globalData.uid;
 var server = app.globalData.server + "/album";
 var appid = app.globalData.appid;
 var mainData;
-import { PHOTOS, SHARE_TITLE, SHARE_IMG } from '../../utils/constanst';
+import { PHOTOS, SHARE_TITLE, SHARE_IMG } from '../../utils/constants';
 
 Page({
   data: {
